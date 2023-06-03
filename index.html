@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ::placeholder {
+  color: rgba(72, 72, 72, 0.701);
+  opacity: 1; /* Firefox */
+}
+
+@keyframes color {
+  0%   { background: #33CCCC; }
+  20%  { background: #33CC36; }
+  40%  { background: #B8CC33; }
+  60%  { background: #FCCA00; }
+  80%  { background: #33CC36; }
+  100% { background: #33CCCC; }
+}
+
+body {
+  background: #6f7b7b; /* Fallback */
+  animation: color 10s infinite linear;
+  text-align: center;
+  padding: 2em;
+}
+        body{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgba(239, 239, 239, 0.596);
+            background-color:gred
+            text-align: center;
+        }
+        .outer1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+
+        }
+        #text1{
+            width: 350px;
+            height: 150px;
+            box-shadow: 0px 10px 10px 0px #101010;
+            background-color: #060606;
+            border: solid 10px rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            line-height: 20px;
+        }
+        .save{
+            display: flex;
+            text-align: center;
+            justify-content: end;
+        }
+        .listouter{
+            color: aliceblue;
+           
+            display: flex;
+            flex-direction: row;
+        }
+        ol {
+           
+            width: 100%;
+        }
+        ol li{
+            padding: 8px 12px 8px 50px;
+            background-color: #101010;
+            margin: 15px;
+            border-radius: 25px;
+            border: solid 0.0001px black;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        ol li:hover{
+            background-color: rgb(32, 29, 29);
+        }
+        span{
+
+            padding: 5px;
+        }
+        span:hover
+        {
+            
+           
+            color:rgb(60, 59, 59);
+            background-color: red;
+            color: white;
+        
+         
+            
+
+        }
+        .checked{
+           text-decoration: line-through;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="outer1">
+        <h1>TO DO LIST</h1>
+        <div class="outer2">
+            <textarea name="" id="text1" cols="30" rows="10" placeholder="Add text here"></textarea>
+            
+            <div class="save" >
+
+               
+               <button onclick="add1()" >Save</button>
+           </div>
+           
+        </div>
+    </div>
+    <div class="listouter">
+        <ol id="listconatiner" type=""1>
+           <!-- <li class="checked"></p></li> -->
+           
+        </ol>
+
+    </div>
+</body>
+</html>
+<script>
+    const k=document.getElementById("listconatiner");
+     inputbox=document.getElementById("text1");
+    function add1()
+    {
+       if(inputbox.value==='')
+       {
+        alert("YOU MUST ADD SOME EVENT TO SAVE");
+       }
+       else{
+
+           let li=document.createElement("li");
+           li.innerHTML=inputbox.value;
+           k.appendChild(li);
+           let span=document.createElement("span");
+           span.innerHTML="\u00d7";
+           
+           
+           li.appendChild(span);
+           
+           
+        }
+           inputbox.value='';
+    }
+    k.addEventListener("click",read);
+    function read(e){
+        if(e.target.tagName==="SPAN"){
+            
+            alert("ARE YOU SURE? YOU WANA DELETE ") ; 
+            e.target.parentElement.remove();
+        }
+        else if(e.target.tagName==="LI")
+        {
+            e.target.classList.toggle("checked");
+            e.target.classList.toggle("box");
+        }
+    }
+
+   
+</script>
